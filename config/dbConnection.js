@@ -1,6 +1,5 @@
 const { Sequelize } = require("sequelize");
-//const logger = require("../config/logger.config");
-let {PG_DB_URI}=process.env
+// const logger = require("../config/logger.config");
 
 class DatabaseConnector {
   constructor() {
@@ -13,23 +12,27 @@ class DatabaseConnector {
       freezeTableName: true,
       createdAt: "CreatedAt",
       updatedAt: "UpdatedAt",
-      deletedAt: "DeletedAt"
-    }
+      deletedAt: "DeletedAt",
+    };
   }
 
   handleDBConnectionError(db, error) {
     switch (db) {
       case "postgres":
         if (this.POSTGRES_RETRY_COUNT < this.POSTGRES_RETRY_LIMIT) {
-            console.log("Postgres connection error", error);
+          // eslint-disable-next-line no-console
+          console.log("Postgres connection error", error);
           this.POSTGRES_RETRY_COUNT += 1;
           setTimeout(() => {
-        console.log("Retrying...");
+            // eslint-disable-next-line no-console
+            console.log("Retrying...");
             this.connectToPostgres();
           }, this.RETRY_TIMEOUT);
         } else {
-            console.log("Postgres connection error", error);
-            console.log("Retry Limit Exceeded. Terminating process");
+          // eslint-disable-next-line no-console
+          console.log("Postgres connection error", error);
+          // eslint-disable-next-line no-console
+          console.log("Retry Limit Exceeded. Terminating process");
           process.exit(0);
         }
         break;
@@ -42,7 +45,8 @@ class DatabaseConnector {
   async connectToPostgres() {
     this.pgConn
       .sync({ alter: true })
-      .then(() =>console.log("Connected to Postgres"))
+      // eslint-disable-next-line no-console
+      .then(() => console.log("Connected to Postgres"))
       .catch((error) => {
         this.handleDBConnectionError("postgres", error);
       });

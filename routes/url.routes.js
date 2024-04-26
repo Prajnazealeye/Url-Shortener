@@ -1,8 +1,7 @@
+const router = require("express").Router();
+const { createUrl, getLinkWithShortUrl } = require("../controllers/url.controller");
 
-const router=require("express").Router();
-const {createUrl, getLinkWithShortUrl} = require("../controllers/url.controller")
+router.post("/create", createUrl);
+router.get("/:URLCode", getLinkWithShortUrl);
 
-router.post("/create", createUrl )
-router.get("/getUrl", getLinkWithShortUrl )
-
-module.exports=router;
+module.exports = router;

@@ -1,5 +1,8 @@
-const router = require("express").Router()
+const router = require("express").Router();
 
-router.use("/url", require("../routes/url.routes"))
+router.use("/url", require("./url.routes"));
 
-module.exports = router
+// router.get("/r/:id",(req,res)=>{
+// return res.redirect()})
+
+module.exports = router;

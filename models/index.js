@@ -1,4 +1,3 @@
-const {urlSchema} = require("../models/url.model");
+const { urlSchema } = require("./url.model");
 
-
-module.exports = {urlSchema}
+module.exports = { urlSchema };

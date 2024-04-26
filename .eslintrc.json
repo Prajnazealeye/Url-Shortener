@@ -1,0 +1,41 @@
+{
+    "env": {
+      "commonjs": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": "airbnb-base",
+    "parserOptions": {
+      "ecmaVersion": "latest"
+    },
+    "rules": {
+      "linebreak-style": "off",
+      "semi": [
+        "error",
+        "always"
+      ],
+      "quotes": [
+        "warn",
+        "double"
+      ],
+      "camelcase": [
+        "warn",
+        {
+          "properties": "never"
+        }
+      ],
+      "prefer-const": [
+        "warn",
+        {
+          "destructuring": "any"
+        }
+      ],
+      "max-len": "off",
+      "object-curly-newline": [
+        "error",
+        {
+          "ImportDeclaration": "never"
+        }
+      ]
+    }
+  }
